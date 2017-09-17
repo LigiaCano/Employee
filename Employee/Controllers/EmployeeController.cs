@@ -21,8 +21,12 @@ namespace Employee.Controllers
             return View();
         }
 
-        public ActionResult Details(int id)
+        public ActionResult Details(int? id)
         {
+            if (id == null)
+            {
+                return RedirectToAction("Index");
+            }
             return View(employeeDashBoard.Find(id));
         }
 
@@ -32,6 +36,10 @@ namespace Employee.Controllers
         {
             try
             {
+                if (employee == null)
+                {
+                    return RedirectToAction("Index");
+                }
                 employeeDashBoard.Add(employee);
 
                 return RedirectToAction("Index");
@@ -43,8 +51,12 @@ namespace Employee.Controllers
         }
 
         // GET: Employee/Delete/5
-        public ActionResult Delete(int id)
+        public ActionResult Delete(int? id)
         {
+            if (id == null)
+            {
+                return RedirectToAction("Index");
+            }
             return View(employeeDashBoard.Find(id));
         }
 
@@ -64,8 +76,13 @@ namespace Employee.Controllers
             }
         }
 
-        public ActionResult Edit(int id)
+        public ActionResult Edit(int? id)
         {
+            if (id == null)
+            {
+                return RedirectToAction("Index");
+            }
+
             return View(employeeDashBoard.Find(id));
         }
 
