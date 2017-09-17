@@ -12,7 +12,9 @@ namespace Employee.Models
     {
         private static volatile IDbConnection instance;
         private static object syncRoot = new object();
-        private Conexion() { }
+        private Conexion()
+        {
+        }
         public static IDbConnection Instance
         {
             get
@@ -22,7 +24,7 @@ namespace Employee.Models
                     lock (syncRoot)
                     {
                         if (instance == null)
-                            instance = new SqlConnection(ConfigurationManager.ConnectionStrings["ModelPrueba"].ConnectionString);
+                            instance = new SqlConnection(ConfigurationManager.ConnectionStrings["ModelEmployee"].ConnectionString);
                     }
                 }
                 

@@ -11,8 +11,8 @@ namespace Employee.Models
 {
     public class EmployeeDashBoard : IEmployeeDashBoard
     {
-        private IDbConnection _db = new SqlConnection(ConfigurationManager.ConnectionStrings["ModelEmployee"].ConnectionString);
-        //private IDbConnection _db = Conexion.Instance;
+        //private IDbConnection _db = new SqlConnection(ConfigurationManager.ConnectionStrings["ModelEmployee"].ConnectionString);
+        private IDbConnection _db = Conexion.Instance;
 
         public Person Add(Person employee)
         {
