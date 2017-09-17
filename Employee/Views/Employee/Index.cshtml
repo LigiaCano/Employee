@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Employee.Models.Employee>
+﻿@model IEnumerable<Employee.Models.Person>
 
 @{
     ViewBag.Title = "Index";
@@ -35,9 +35,9 @@
             @Html.DisplayFor(modelItem => item.EmpScore)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            @Html.ActionLink("Edit", "Edit", new { id = item.EmpID }) |
+            @Html.ActionLink("Details", "Details", new { id = item.EmpID })  |
+            @Html.ActionLink("Delete", "Delete", new { id = item.EmpID }) 
         </td>
     </tr>
 }

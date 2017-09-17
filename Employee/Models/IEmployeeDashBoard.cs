@@ -8,10 +8,10 @@ namespace Employee.Models
 {
     interface IEmployeeDashBoard
     {
-        List<Employee> GetAll();
-        Employee Find(int? id);
-        Employee Add(Employee employee);
-        Employee Update(Employee employee);
+        List<Person> GetAll();
+        Person Find(int? id);
+        Person Add(Person employee);
+        Person Update(Person employee);
         void Remove(int id);
     }
 }

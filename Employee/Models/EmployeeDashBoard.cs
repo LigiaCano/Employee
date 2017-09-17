@@ -11,34 +11,43 @@ namespace Employee.Models
 {
     public class EmployeeDashBoard : IEmployeeDashBoard
     {
-        //private IDbConnection _db = new SqlConnection(ConfigurationManager.ConnectionStrings["ModelPrueba"].ConnectionString);
-        private IDbConnection _db = Conexion.Instance;
+        private IDbConnection _db = new SqlConnection(ConfigurationManager.ConnectionStrings["ModelEmployee"].ConnectionString);
+        //private IDbConnection _db = Conexion.Instance;
 
-        public Employee Add(Employee employee)
+        public Person Add(Person employee)
         {
-            throw new NotImplementedException();
+            var sqlQuery = "INSERT INTO Person (EmpName, EmpScore) VALUES(@EmpName, @EmpScore); " + "SELECT CAST(SCOPE_IDENTITY() as int)";
+            var employeeId = _db.Query<int>(sqlQuery, employee).Single();
+            employee.EmpID = employeeId;
+            return employee;
         }
 
-        public Employee Find(int? id)
+        public Person Find(int? id)
         {
-            throw new NotImplementedException();
+            string query = "SELECT * FROM Person WHERE EmpID = " + id + "";
+            return _db.Query<Person>(query).SingleOrDefault();
         }
 
-        public List<Employee> GetAll()
+        public List<Person> GetAll()
         {
-                List<Employee> empList = _db.Query<Employee>("SELECT * FROM Employee").ToList();
-            _db.Close();
+                List<Person> empList = _db.Query<Person>("SELECT * FROM Person").ToList();
             return empList;   
         }
 
         public void Remove(int id)
         {
-            throw new NotImplementedException();
+            var sqlQuery = ("Delete From Person Where EmpID = " + id + "");
+            _db.Execute(sqlQuery);
         }
 
-        public Employee Update(Employee employee)
+        public Person Update(Person employee)
         {
-            throw new NotImplementedException();
+            var sqlQuery = "UPDATE Person " +
+                    "SET EmpName = @EmpName, " +
+                    " EmpScore = @EmpScore " +
+            "WHERE EmpID = @EmpID";
+            _db.Execute(sqlQuery, employee);
+            return employee;
         }
     }
 }

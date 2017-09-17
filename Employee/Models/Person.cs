@@ -5,7 +5,7 @@ using System.Web;
 
 namespace Employee.Models
 {
-    public class Employee
+    public class Person
     {
         public int EmpID { get; set; }
 

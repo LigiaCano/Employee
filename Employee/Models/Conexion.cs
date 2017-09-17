@@ -25,6 +25,7 @@ namespace Employee.Models
                             instance = new SqlConnection(ConfigurationManager.ConnectionStrings["ModelPrueba"].ConnectionString);
                     }
                 }
+                
                 return instance;
             }
         }
